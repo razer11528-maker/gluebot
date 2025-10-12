@@ -23,7 +23,7 @@ Basic timed restart without API auth:
     container_name: gluebot
     image: ghcr.io/razer11528-maker/gluebot:latest
     environment:
-      - RESTART_TIME=19:10            # optional.
+      - RESTART_TIME=19:10            # optional, but required for timed restarts.
       - TZ=Europe/London              # optional. defaults to UTC.
     network_mode: "service:gluetun"
     restart: unless-stopped
@@ -36,23 +36,23 @@ Timed restart with API auth:
     container_name: gluebot
     image: ghcr.io/razer11528-maker/gluebot:latest
     environment:
-      - API_KEY=SUperS3cretK3y        # optional.
-      - RESTART_TIME=19:10            # optional.
+      - API_KEY=SUperS3cretK3y        # optional, but required for secured gluetun API.
+      - RESTART_TIME=19:10            # optional, but required for timed restarts.
       - TZ=Europe/London              # optional. defaults to UTC.
     network_mode: "service:gluetun"
     restart: unless-stopped
 ```
 
 
-Timed restart with API auth and speedtest:
+Timed restart with API auth and speedtest (webhook and threshholds must be defined in speedtest container):
 ```
   gluebot:
     container_name: gluebot
     image: ghcr.io/razer11528-maker/gluebot:latest
     environment:
-      - API_KEY=SUperS3cretK3y        # optional.
+      - API_KEY=SUperS3cretK3y        # optional, but required for secured gluetun API.
       - CONTROL_SERVER_PORT=8000      # optional. defaults to 8000.
-      - RESTART_TIME=19:10            # optional.
+      - RESTART_TIME=19:10            # optional, but required for timed restarts.
       - TZ=${TZ}                      # optional. defaults to UTC.
     network_mode: "service:gluetun"
     restart: unless-stopped
