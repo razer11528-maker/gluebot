@@ -1,6 +1,6 @@
 # gluebot
 
-A basic container that auto-restarts gluetun at a specified time or if your speedtest is below a certain download speed,vupload speed, or ping time.
+A basic container that auto-restarts gluetun at a specified time or if your speedtest is below a certain download speed, upload speed, or ping time.
 
 ![screenshot](gluebot-git-logo.png)
 
@@ -14,8 +14,8 @@ There are three modes this container can operate in.
 
 Requirements:
 
-* Timed restart: An existing gluetun docker compose file. As of the current gluetun release, the API is open and doesn't require authentication. Future gluetun releases will require the config.toml file defined. Gluebot supports both.
-* Speedtest restart: Requires a functioning lscr.io/linuxserver/speedtest-tracker container inside your gluetun network. Requires the gluebot port to be defined in gluetun's port defines.
+* Timed restart: An existing gluetun docker compose file. As of the current gluetun release, the API is open and doesn't require authentication. Future gluetun releases will require the config.toml file to be defined. Gluebot supports both.
+* Speedtest restart: Requires a functioning lscr.io/linuxserver/speedtest-tracker container inside your gluetun network. And the gluebot webhook url and thresholds defined in speedtest-tracker.
 
 Basic timed restart without API auth:
 ```
