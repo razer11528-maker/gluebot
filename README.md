@@ -44,7 +44,7 @@ Timed restart with API auth:
 ```
 
 
-Timed restart with API auth and speedtest (webhook and threshholds must be defined in speedtest container):
+Timed and speedtezt restart with API auth (webhook and threshholds must be defined in speedtest container):
 ```
   gluebot:
     container_name: gluebot
@@ -53,7 +53,20 @@ Timed restart with API auth and speedtest (webhook and threshholds must be defin
       - API_KEY=SUperS3cretK3y        # optional, but required for secured gluetun API.
       - CONTROL_SERVER_PORT=8000      # optional. defaults to 8000.
       - RESTART_TIME=19:10            # optional, but required for timed restarts.
-      - TZ=${TZ}                      # optional. defaults to UTC.
+      - TZ=Europe/London              # optional. defaults to UTC.
+    network_mode: "service:gluetun"
+    restart: unless-stopped
+```
+
+Only speedtezt restart with API auth (webhook and threshholds must be defined in speedtest container):
+```
+  gluebot:
+    container_name: gluebot
+    image: ghcr.io/razer11528-maker/gluebot:latest
+    environment:
+      - API_KEY=SUperS3cretK3y        # optional, but required for secured gluetun API.
+      - CONTROL_SERVER_PORT=8000      # optional. defaults to 8000.
+      - TZ=Europe/London              # optional. defaults to UTC.
     network_mode: "service:gluetun"
     restart: unless-stopped
 ```
