@@ -44,7 +44,7 @@ Timed restart with API auth:
 ```
 
 
-Timed and speedtezt restart with API auth (webhook and threshholds must be defined in speedtest container):
+Timed and speedtest restart with API auth (webhook and threshholds must be defined in speedtest container):
 ```
   gluebot:
     container_name: gluebot
@@ -58,7 +58,7 @@ Timed and speedtezt restart with API auth (webhook and threshholds must be defin
     restart: unless-stopped
 ```
 
-Only speedtezt restart with API auth (webhook and threshholds must be defined in speedtest container):
+Only speedtest restart with API auth (webhook and threshholds must be defined in speedtest container):
 ```
   gluebot:
     container_name: gluebot
