@@ -8,8 +8,8 @@ This is a personal container I built for my own use. I was encouraged to make it
 
 There are three modes of operation:
 
-* Timed daily restart of gluetun. Via setting an 24hr time, like 19:10 for 7:10pm.
-* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results. Gluebot listens on port 4040. ANY post to this port will trigger a restart.
+* Timed daily restart of gluetun via setting a 24hr time env variable, like 19:10 for 7:10pm.
+* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results. Gluebot listens on port 4040. *ANY* post to this port will trigger a restart.
 * Both timed daily restart and speedtest-tracker results.
 
 Requirements:
