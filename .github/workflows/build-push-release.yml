@@ -45,9 +45,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: "Release ${{ env.VERSION }}"
           template: |
-            ### Changes since previous release
-            {commits}
-            
             ### How to pull this version
             ```sh
             docker pull ghcr.io/${{ github.repository }}:${{ env.VERSION }}
@@ -57,3 +54,6 @@ jobs:
             ```sh
             docker pull ghcr.io/${{ github.repository }}:latest
             ```
+
+            ### Changes since previous release
+            {commits}
