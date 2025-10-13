@@ -1,0 +1,59 @@
+name: Build/Push Docker Image and Create Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Get tag version
+        id: get_version
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ env.VERSION }}
+            ghcr.io/${{ github.repository }}:latest
+
+      - name: Create Release
+        id: create_release
+        uses: fregante/release-with-changelog@v3
+        with:
+          # Uses the tag from the workflow trigger
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "Release ${{ env.VERSION }}"
+          template: |
+            ### Changes since previous release
+            {commits}
+            
+            ### How to pull this version
+            ```sh
+            docker pull ghcr.io/${{ github.repository }}:${{ env.VERSION }}
+            ```
+
+            ### How to pull the latest version
+            ```sh
+            docker pull ghcr.io/${{ github.repository }}:latest
+            ```
