@@ -79,3 +79,6 @@ Only speedtest restart with API auth (webhook and threshholds must be defined in
     network_mode: "service:gluetun"
     restart: unless-stopped
 ```
+
+![screenshot](speedtest-tracker-webhook.png)
+![screenshot](speedtest-tracker-thresholds.png)
