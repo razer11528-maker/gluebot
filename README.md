@@ -6,10 +6,10 @@ A basic container that auto-restarts gluetun at a specified time or if your spee
 
 This is a personal container I built for my own use. I was encouraged to make it public. It comes with no support or planned future releases.
 
-There are three modes in which this container can operate:
+There are three modes of operation:
 
-* Timed daily restart of gluetun.
-* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results. Gluebot listens on port 4040 for speedtest tracker.
+* Timed daily restart of gluetun. Via setting an 24hr time, like 19:10 for 7:10pm.
+* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results. Gluebot listens on port 4040. ANY post to this port will trigger a restart.
 * Both timed daily restart and speedtest-tracker results.
 
 Requirements:
