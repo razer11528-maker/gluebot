@@ -1,0 +1,5 @@
+flask
+requests
+waitress
+werkzeug
+schedule
