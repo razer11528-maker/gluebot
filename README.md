@@ -82,3 +82,19 @@ Only speedtest restart with API auth (webhook and threshholds must be defined in
 
 ![screenshot](speedtest-tracker-webhook.png)
 ![screenshot](speedtest-tracker-thresholds.png)
+
+Example config.toml file in [GLUTEN_CONFIG_DIR]/auth/config.toml:
+
+```
+[[roles]]
+name = "homepage"
+routes = ["GET /v1/publicip/ip"]
+auth = "apikey"
+apikey = "H0meP4geK3y"
+
+[[roles]]
+name = "gluebot"
+routes = ["PUT /v1/openvpn/status"]
+auth = "apikey"
+apikey = "SUperS3cretK3y"
+```
