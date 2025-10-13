@@ -9,7 +9,7 @@ This is a personal container I built for my own use. I was encouraged to make it
 There are three modes in which this container can operate:
 
 * Timed daily restart of gluetun.
-* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results.
+* Restart based on speedtest-tracker container (lscr.io/linuxserver/speedtest-tracker) results. Gluebot listens on port 4040 for speedtest tracker.
 * Both timed daily restart and speedtest-tracker results.
 
 Requirements:
