@@ -46,6 +46,7 @@ app.logger.setLevel(logging.INFO)
 
 def restart_job():
     app.logger.info(f"Restart time triggered")
+    # TODO: add try logic from trigger_put
     response = requests.put(API_URL, json=DATA, headers=HEADERS)
     app.logger.info(f'PUT request sent. Status code: {response.status_code}, Response: {response.text}')
 
