@@ -97,7 +97,6 @@ TZ=                     # optional. defaults to UTC.
     image: ghcr.io/razer11528-maker/gluebot:latest
     environment:
       - API_KEY=SUperS3cretK3y
-      - CONTROL_SERVER_PORT=8000
       - TZ=Europe/London
     network_mode: "service:gluetun"
     restart: unless-stopped
