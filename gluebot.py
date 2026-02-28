@@ -14,6 +14,7 @@ import threading
 CONTROL_SERVER_PORT = os.environ.get('CONTROL_SERVER_PORT')
 API_KEY = os.environ.get('API_KEY')
 RESTART_TIME = os.environ.get('RESTART_TIME')
+CONTROL_SERVER_ENDPOINT = os.environ.get('CONTROL_SERVER_ENDPOINT', '/v1/openvpn/status')
 
 if not CONTROL_SERVER_PORT:
     raise ValueError("CONTROL_SERVER_PORT must be set")
@@ -22,7 +23,7 @@ app = Flask(__name__)
 # Apply the ProxyFix middleware to correctly capture the client's real IP address
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
 
-API_URL = f'http://127.0.0.1:{CONTROL_SERVER_PORT}/v1/openvpn/status'
+API_URL = f'http://127.0.0.1:{CONTROL_SERVER_PORT}${CONTROL_SERVER_ENDPOINT}'
 DATA = {
     'status': 'stopped'
 }
