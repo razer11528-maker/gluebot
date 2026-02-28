@@ -42,12 +42,14 @@ gluebot:
 
 ### Environment options:
 
-```
-API_KEY=                # optional, but required for secured gluetun API.
-CONTROL_SERVER_PORT=    # optional. defaults to 8000.
-RESTART_TIME=           # optional, but required for timed restarts.
-TZ=                     # optional. defaults to UTC.
-```
+| Variable | Default / Requirement | Description |
+| :--- | :--- | :--- |
+| **API_KEY** | Optional | Required only if your Gluetun API is secured with authentication. |
+| **CONTROL_SERVER_PORT** | `8000` | The port Gluetun uses for its internal HTTP control server. |
+| **CONTROL_SERVER_ENDPOINT** | `/v1/openvpn/status` | The API path used to check/reset the connection. This has recently changed to `/v1/vpn/status` |
+| **RESTART_TIME** | Optional | Required if you want to force a restart at a specific time regardless of speed. |
+| **TZ** | `UTC` | Set this to your local timezone (e.g., `Europe/Amsterdam`). |
+
 
 ### Basic timed restart without API auth:
 ```
@@ -62,7 +64,7 @@ TZ=                     # optional. defaults to UTC.
 ```
 
 
-### Timed restart with API auth, and gluetun api on port 9090:
+### Timed restart with API auth, and gluetun api on port 9090 and latest api endpoint:
 ```
   gluebot:
     container_name: gluebot
@@ -72,6 +74,7 @@ TZ=                     # optional. defaults to UTC.
       - RESTART_TIME=19:10
       - TZ=Europe/London
       - CONTROL_SERVER_PORT=9090
+		- CONTROL_SERVER_ENDPOINT=/v1/vpn/status
     network_mode: "service:gluetun"
     restart: unless-stopped
 ```
